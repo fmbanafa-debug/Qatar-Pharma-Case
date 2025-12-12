@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Qatar Pharma v. Saudi Arabia | Banafa's Research</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Watermark Pattern */
+        .watermark-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-around;
+            justify-content: space-around;
+            overflow: hidden;
+            opacity: 0.04; /* Very subtle */
+        }
+
+        .watermark-text {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #000;
+            transform: rotate(-30deg);
+            white-space: nowrap;
+            user-select: none;
+            padding: 4rem;
+        }
+
+        /* Smart Term Styling */
+        .smart-term {
+            cursor: pointer;
+            color: #2563eb;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-underline-offset: 4px;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .smart-term:hover {
+            color: #1e40af;
+            background-color: #dbeafe;
+            border-radius: 4px;
+        }
+
+        .smart-term::after {
+            content: '\f05a'; /* Info icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.7em;
+            margin-left: 4px;
+            opacity: 0.6;
+        }
+
+        /* Modal Animation */
+        .modal {
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .content-container {
+            position: relative;
+            z-index: 10; /* Above watermark */
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased relative min-h-screen">
+
+    <!-- Watermark Layer -->
+    <div class="watermark-bg" id="watermarkContainer">
+        <!-- Javascript will populate this to ensure coverage -->
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div class="content-container flex flex-col items-center">
+
+        <!-- Header -->
+        <header class="w-full bg-slate-900 text-white py-12 px-6 shadow-lg border-b-4 border-blue-600">
+            <div class="max-w-5xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+                    <div>
+                        <div class="uppercase tracking-widest text-xs font-bold text-blue-400 mb-2">Regulatory Case Study Series</div>
+                        <h1 class="text-3xl md:text-5xl font-bold mb-2">Qatar Pharma v. Kingdom of Saudi Arabia</h1>
+                        <p class="text-slate-400 text-lg">Enforcement of Arbitral Award & Investment Treaty Breaches</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-sm text-slate-400">Case No. 1:25-cv-07580 (SDNY)</div>
+                        <div class="text-sm text-slate-400">Date: December 13, 2025</div>
+                        <div class="mt-2 inline-block bg-blue-700 px-3 py-1 rounded text-xs font-semibold">Status: Fully Briefed</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Body -->
+        <main class="w-full max-w-5xl px-6 py-10 grid grid-cols-1 lg:grid-cols-3 gap-10">
+
+            <!-- Left Column: Primary Case Details -->
+            <div class="lg:col-span-2 space-y-12">
+
+                <!-- Section 1: Introduction -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-600 pl-4 mb-4">Case Overview</h2>
+                    <p class="mb-4 leading-relaxed text-slate-600">
+                        This case study examines the petition by Qatar Pharma and Dr. Al Sulaiti to confirm a <strong>$100 million ICC arbitral award</strong> against Saudi Arabia. The dispute arises from the 2017 diplomatic blockade, which the tribunal found breached the <span class="smart-term" onclick="openModal('oic')">OIC Investment Agreement</span>.
+                    </p>
+                    <p class="leading-relaxed text-slate-600">
+                        The claimants assert that the blockade repudiated long-term supply contracts, forced the closure of warehouses, and destroyed the value of their investments in the Kingdom. The case is currently before the <span class="smart-term" onclick="openModal('sdny')">SDNY</span> Court for enforcement under the <span class="smart-term" onclick="openModal('ny_convention')">New York Convention</span>.
+                    </p>
+                </section>
+
+                <!-- Section 2: The Demands Table -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-600 pl-4 mb-6">Financial Demands & Relief</h2>
+                    <div class="overflow-x-auto bg-white rounded-lg shadow-md border border-slate-200">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-slate-100 text-slate-700 uppercase font-bold text-xs">
+                                <tr>
+                                    <th class="px-6 py-4">Claimant</th>
+                                    <th class="px-6 py-4">Type of Demand</th>
+                                    <th class="px-6 py-4">Approx. USD</th>
+                                    <th class="px-6 py-4">Basis of Calculation</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="px-6 py-4 font-semibold text-slate-900">Qatar Pharma W.L.L.</td>
+                                    <td class="px-6 py-4">Loss of Enterprise Value</td>
+                                    <td class="px-6 py-4 font-bold text-green-700">$76.1M</td>
+                                    <td class="px-6 py-4 text-slate-500">12.5x <span class="smart-term" onclick="openModal('ebitda')">EBITDA</span> multiple on 2016 Saudi-specific earnings.</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="px-6 py-4 font-semibold text-slate-900">Dr. Al Sulaiti</td>
+                                    <td class="px-6 py-4">Loss of Receivables</td>
+                                    <td class="px-6 py-4 font-bold text-green-700">$16.6M</td>
+                                    <td class="px-6 py-4 text-slate-500">70% recovery of outstanding payments owed by Saudi Ministry of Health.</td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition">
+                                    <td class="px-6 py-4 font-semibold text-slate-900">Dr. Al Sulaiti</td>
+                                    <td class="px-6 py-4">Loss of Inventory</td>
+                                    <td class="px-6 py-4 font-bold text-green-700">$6.6M</td>
+                                    <td class="px-6 py-4 text-slate-500">Value of products manufactured for Saudi market but destroyed during blockade.</td>
+                                </tr>
+                                <tr class="bg-blue-50">
+                                    <td class="px-6 py-4 font-bold text-blue-900" colspan="2">Total Principal</td>
+                                    <td class="px-6 py-4 font-bold text-blue-900" colspan="2">~$99.3 Million USD</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="mt-2 text-xs text-slate-500 italic">*Petitioners also seek post-judgment interest (9% p.a.) and legal fees.</p>
+                </section>
+
+                <!-- Section 3: Procedural Status -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-600 pl-4 mb-4">Current Legal Status (Dec 2025)</h2>
+                    <div class="relative pl-8 border-l-2 border-slate-200 space-y-8">
+                        
+                        <div class="relative">
+                            <span class="absolute -left-[39px] bg-green-500 h-5 w-5 rounded-full border-4 border-white shadow"></span>
+                            <h3 class="font-bold text-lg text-slate-800">October 2024: Final Award</h3>
+                            <p class="text-sm text-slate-600">ICC Tribunal issues Final Award favoring Qatar Pharma.</p>
+                        </div>
+
+                        <div class="relative">
+                            <span class="absolute -left-[39px] bg-green-500 h-5 w-5 rounded-full border-4 border-white shadow"></span>
+                            <h3 class="font-bold text-lg text-slate-800">Sept 2025: Removal to Federal Court</h3>
+                            <p class="text-sm text-slate-600">Saudi Arabia removes the case from NY State Court to US District Court (SDNY).</p>
+                        </div>
+
+                        <div class="relative">
+                            <span class="absolute -left-[39px] bg-blue-600 h-5 w-5 rounded-full border-4 border-white shadow animate-pulse"></span>
+                            <h3 class="font-bold text-lg text-blue-700">December 5, 2025: Petitioners' Reply</h3>
+                            <p class="text-sm text-slate-600">Qatar Pharma files opposition to Saudi Arabia's motion to dismiss. Arguments focus on waiver of <span class="smart-term" onclick="openModal('fsia')">Sovereign Immunity</span> via the investment treaty.</p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Section 4: Analyst Conclusion -->
+                <section class="bg-slate-100 p-6 rounded-lg border border-slate-200">
+                    <h2 class="text-xl font-bold text-slate-800 mb-3 flex items-center">
+                        <i class="fas fa-gavel mr-2 text-blue-600"></i> Regulatory Conclusion
+                    </h2>
+                    <p class="text-slate-700 mb-4">
+                        <strong>Most Likely Outcome:</strong> Confirmation of Award.
+                    </p>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        U.S. courts heavily favor the enforcement of international arbitration awards. While Saudi Arabia has raised defenses regarding sovereign immunity and venue, the "arbitration exception" to the FSIA typically applies when a state has signed an investment treaty agreeing to arbitrate.
+                    </p>
+                    <div class="mt-4 p-4 bg-white rounded border-l-4 border-green-500 text-sm text-slate-700">
+                        <strong>Impact on Pharma:</strong> This case highlights the importance of <a href="https://investmentpolicy.unctad.org/investment-dispute-settlement" target="_blank" class="text-blue-600 hover:underline">Investment Treaties (ISDS)</a> in protecting pharmaceutical assets abroad against political risks like blockades or regulatory expropriation.
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Right Column: Context & Company Profile -->
+            <aside class="space-y-8">
+                
+                <!-- Company Profile Card -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-100 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-blue-100 rounded-bl-full -mr-10 -mt-10 transition group-hover:bg-blue-200"></div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 relative z-10">About Qatar Pharma</h3>
+                    
+                    <div class="mb-4">
+                        <span class="text-xs font-bold uppercase text-slate-400">Industry</span>
+                        <div class="text-slate-700 font-medium">Pharmaceutical Manufacturing</div>
+                    </div>
+
+                    <div class="mb-4">
+                        <span class="text-xs font-bold uppercase text-slate-400">Headquarters</span>
+                        <div class="text-slate-700 font-medium">Doha, Qatar (Est. 2009)</div>
+                    </div>
+
+                    <div class="mb-6">
+                        <span class="text-xs font-bold uppercase text-slate-400">Key Portfolio</span>
+                        <ul class="mt-2 space-y-2 text-sm text-slate-600">
+                            <li class="flex items-start"><i class="fas fa-prescription-bottle-medical text-blue-500 mt-1 mr-2"></i> <span>IV Infusion Solutions</span></li>
+                            <li class="flex items-start"><i class="fas fa-flask text-blue-500 mt-1 mr-2"></i> <span>Hemodialysis Solutions</span></li>
+                            <li class="flex items-start"><i class="fas fa-pump-medical text-blue-500 mt-1 mr-2"></i> <span>Topical Drugs (Creams/Lotions)</span></li>
+                            <li class="flex items-start"><i class="fas fa-tablets text-blue-500 mt-1 mr-2"></i> <span>Oral Solid Dosages</span></li>
+                        </ul>
+                    </div>
+                    
+                    <a href="https://www.qatarpharma.org/" target="_blank" class="block w-full text-center py-2 px-4 border border-blue-600 text-blue-600 rounded hover:bg-blue-50 transition text-sm font-semibold">
+                        Visit Company Website
+                    </a>
+                </div>
+
+                <!-- Learning Objectives -->
+                <div class="bg-slate-800 text-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-lg font-bold mb-4">Study Objectives</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Understand arbitration enforcement.</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Analyze valuation of pharma assets (EBITDA).</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-2"></i> Review sovereign risks in supply chains.</li>
+                    </ul>
+                </div>
+
+                 <!-- External Resources -->
+                 <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                    <h3 class="text-lg font-bold text-blue-900 mb-4">Resources</h3>
+                    <div class="flex flex-col gap-2">
+                        <a href="https://jusmundi.com/en/document/decision/en-qatar-pharma-for-pharmaceutical-industries-and-dr-ahmed-bin-mohammad-al-haie-al-sulaiti-v-kingdom-of-saudi-arabia-final-award-wednesday-23rd-october-2024" target="_blank" class="flex items-center p-3 bg-white rounded shadow-sm hover:shadow-md transition">
+                            <i class="fas fa-file-contract text-slate-400 mr-3"></i>
+                            <span class="text-sm font-medium text-slate-700">Jus Mundi Case File</span>
+                        </a>
+                        <a href="https://www.italaw.com/cases/13935" target="_blank" class="flex items-center p-3 bg-white rounded shadow-sm hover:shadow-md transition">
+                            <i class="fas fa-globe text-slate-400 mr-3"></i>
+                            <span class="text-sm font-medium text-slate-700">Italaw Document Repository</span>
+                        </a>
+                    </div>
+                </div>
+
+            </aside>
+
+        </main>
+
+        <footer class="w-full bg-slate-900 text-slate-500 py-8 text-center text-sm border-t border-slate-800">
+            <p>&copy; 2025 Banafa's Research. All Rights Reserved.</p>
+            <p class="mt-2 text-xs">For educational use by regulatory officers. Data based on public court filings as of Dec 2025.</p>
+        </footer>
+    </div>
+
+    <!-- Modals Overlay -->
+    <div id="modalOverlay" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4" onclick="closeModal()">
+        
+        <!-- Modal Content Container -->
+        <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden transform transition-all scale-95" id="modalCard" onclick="event.stopPropagation()">
+            <div class="bg-blue-600 p-4 flex justify-between items-center">
+                <h3 id="modalTitle" class="text-white font-bold text-lg">Term Definition</h3>
+                <button onclick="closeModal()" class="text-white hover:bg-blue-700 rounded-full p-1 w-8 h-8 flex items-center justify-center">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div id="modalBody" class="text-slate-700 leading-relaxed text-sm space-y-4">
+                    <!-- Content injected via JS -->
+                </div>
+            </div>
+            <div class="bg-slate-50 p-4 text-right">
+                <button onclick="closeModal()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded font-medium text-sm transition">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Watermark Generation
+        const watermarkContainer = document.getElementById('watermarkContainer');
+        const watermarkText = "Banafa's Research";
+        
+        // Create enough watermarks to cover the screen
+        for(let i=0; i<30; i++) {
+            let div = document.createElement('div');
+            div.className = 'watermark-text';
+            div.innerText = watermarkText;
+            watermarkContainer.appendChild(div);
+        }
+
+        // Modal Content Database
+        const definitions = {
+            'oic': {
+                title: 'OIC Investment Agreement (1981)',
+                body: '<p>The <strong>Agreement for Promotion, Protection and Guarantee of Investments among Member States of the Organization of the Islamic Conference</strong>. It is a multilateral treaty that provides protections for investors from member states (like Qatar and Saudi Arabia), including protection against expropriation and guarantees of free transfer of capital.</p><p class="mt-2 text-slate-500 italic">Relevance: This treaty provided the jurisdictional basis for Qatar Pharma to sue Saudi Arabia despite the lack of diplomatic relations.</p>'
+            },
+            'ny_convention': {
+                title: 'New York Convention (1958)',
+                body: '<p>The <strong>Convention on the Recognition and Enforcement of Foreign Arbitral Awards</strong>. It is a key international treaty that requires courts of contracting states (like the USA) to give effect to private arbitration agreements and to recognize and enforce arbitration awards made in other contracting states.</p><p class="mt-2 text-slate-500 italic">Relevance: It is the legal mechanism allowing a US Court to force Saudi Arabia to pay the award.</p>'
+            },
+            'sdny': {
+                title: 'S.D.N.Y. (Southern District of New York)',
+                body: '<p>A federal district court known for handling major international commercial and financial disputes due to New York City\'s status as a global financial hub.</p>'
+            },
+            'ebitda': {
+                title: 'EBITDA',
+                body: '<p><strong>Earnings Before Interest, Taxes, Depreciation, and Amortization</strong>. A measure of a company\'s overall financial performance and is used as an alternative to net income in some circumstances.</p><p class="mt-2 text-slate-500 italic">Relevance: The tribunal used a multiple of 12.5x the company\'s EBITDA to calculate how much the business was worth before it was damaged by the blockade.</p>'
+            },
+            'fsia': {
+                title: 'FSIA (Foreign Sovereign Immunities Act)',
+                body: '<p>A US law that establishes the limitations as to whether a foreign sovereign nation (or its agencies) may be sued in U.S. courts. Generally, countries are immune, but exceptions exist, such as the "Arbitration Exception" or "Commercial Activity Exception".</p>'
+            }
+        };
+
+        // Modal Functions
+        function openModal(key) {
+            const data = definitions[key];
+            if(data) {
+                document.getElementById('modalTitle').innerText = data.title;
+                document.getElementById('modalBody').innerHTML = data.body;
+                
+                const overlay = document.getElementById('modalOverlay');
+                const card = document.getElementById('modalCard');
+                
+                overlay.classList.add('active');
+                card.classList.remove('scale-95');
+                card.classList.add('scale-100');
+            }
+        }
+
+        function closeModal() {
+            const overlay = document.getElementById('modalOverlay');
+            const card = document.getElementById('modalCard');
+            
+            card.classList.remove('scale-100');
+            card.classList.add('scale-95');
+            
+            setTimeout(() => {
+                overlay.classList.remove('active');
+            }, 100);
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
+
